@@ -1,8 +1,5 @@
-let disable = true;
 setTick(() => {
   if (IsPedInAnyVehicle(GetPlayerPed(-1), true)) {
-    disable = false;
-
     let stName = GetStreetNameFromHashKey(
       GetStreetNameAtCoord(...GetEntityCoords(GetPlayerPed(-1)))[0]
     );
@@ -17,9 +14,9 @@ setTick(() => {
 
     SendNuiMessage(
       JSON.stringify({
-        disable,
+        disable: false,
         limit,
       })
     );
-  } else SendNuiMessage(JSON.stringify({ disable }));
+  } else SendNuiMessage(JSON.stringify({ disable: true }));
 });
